@@ -34,6 +34,12 @@
 
   for (var j = 0; j < cols; j++) {
    var td = document.createElement('td');
+      td.classList.add("input");
+      var input = document.createElement('input');
+      input.type = "text";
+      input.value = 'Row #' + (i + 1); // Add a value?
+      td.appendChild(input);
+      tr.appendChild(td);
   }
  }
 </script>
