@@ -28,27 +28,48 @@
  thead.appendChild(headRow);
 
  var tbody = document.createElement('tbody');
-
+ var playerName = ['','','','',''];
+ var allStats = [];
  for (var i = 0; i < rows; i++) {
   var tr = document.createElement('tr');
-
+  var statsForPlayer = [0,0,0,0,0,0,0,0,0,0,0,0];
+  allStats.push(statsForPlayer);
   for (var j = 0; j < cols; j++) {
    var td = document.createElement('td');
+    //Input textbox stuff
       td.classList.add("input");
       var input = document.createElement('input');
+      input.id = i + ',' + j;
       input.type = "text";
-      input.value = 'Row #' + (i + 1); // Add a value?
+      input.width = 20;
+      if (j === 0) {
+          input.value = 'Row #' + (i + 1); // Add a value?
+      } else {
+          input.value = '' + statsForPlayer[j - 1];
+      }
       //Now adding the increment buttons
-
-      td.classList.add("button");
-
-      var button = document.createElement('button');
-      button.type = 'add';
-      button.value('+');
-
-
       td.appendChild(input);
-      td.appendChild(button);
+      if (j !== 0) {
+          td.classList.add("button");
+
+          var plusButton = document.createElement('button');
+          plusButton.type = 'add';
+          plusButton.name = '+';
+
+          var minusButton = document.createElement('button');
+          minusButton.type = 'add';
+          minusButton.name = '+';
+
+          var plus = document.createTextNode("+");
+          var minus = document.createTextNode("-");
+
+          plusButton.appendChild(plus);
+          minusButton.appendChild(minus);
+
+          td.appendChild(plusButton);
+          td.appendChild(minusButton);
+      }
+
       tr.appendChild(td);
   }
      tbody.appendChild(tr);
@@ -56,6 +77,22 @@
  table.appendChild(thead);
  table.appendChild(tbody);
  document.body.appendChild(table);
+
+ var testButton = document.createElement('button');
+
+ //testButton.onclick(statsForPlayer[0][0] = statsForPlayer[0][0] + 1);
+ var add = document.createTextNode('add');
+ testButton.appendChild(add);
+
+ document.body.appendChild(testButton);
+
+ testButton.onclick = function() {add1()};
+ function add1() {
+     allStats[0][0] = allStats[0][0] + 1;
+     console.log(allStats[0][0]);
+     var x = document.getElementById(0 + ','+ 0);
+     x.value = allStats[0][0];
+ }
 </script>
 
 </body>
