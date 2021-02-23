@@ -1,50 +1,42 @@
  <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
-<title>Page Title</title>
+<title>R6 Match Stat Builder</title>
 </head>
 <body>
 
 <h1>This is a Heading</h1>
 <p>This is a paragraph.</p>
 
- <table style = "width:100%">
-  <tr>
-   <th>Player</th>
-   <th>Kills</th>
-   <th>Deaths</th>
-   <th>OK</th>
-   <th>OD</th>
-   <th>KOST</th>
-   <th>Plants</th>
-   <th>1vX</th>
-   <th>3vK</th>
-   <th>4vK</th>
-   <th>ACE</th>
-   <th>HS</th>
-   <th>Rounds</th>
-  </tr>
-  <tr>
+<script>
+ var rows = 5;
+ var cols = 13;
 
-  </tr> <!-- All below add text bboxes and buttons for ticks -->
-  <tr><td>
-   <form>
-    <label id = "name"></label>
-    <input type = "text" name  = "playerName" >
-   </form>
-  </td></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
-  <tr></tr> <!-- add textbox and playernames-->
- </table>
- 
- 
+ var table = document.createElement('table');
+ table.classList.add('table');
+
+ var thead = document.createElement('thead');
+ var headRow = document.createElement('tr');
+ var columnNames = ["Col1", "Col2", "Col3", "Col4"];
+
+ for (var i = 0; i < 4; i++) {
+  var th = document.createElement('th');
+  th.appendChild(document.createTextNode(columnNames[i]));
+  headRow.appendChild(th);
+ }
+
+ thead.appendChild(headRow);
+
+ var tbody = document.createElement('tbody');
+
+ for (var i = 0; i < rows; i++) {
+  var tr = document.createElement('tr');
+
+  for (var j = 0; j < cols; j++) {
+   var td = document.createElement('td');
+  }
+ }
+</script>
+
 </body>
 </html> 
