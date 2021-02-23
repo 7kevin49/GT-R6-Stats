@@ -19,7 +19,7 @@
  var headRow = document.createElement('tr');
  var columnNames = ["Player", "Kills", "Deaths", "OK", "OD", "KOST", "Plants", "1vX", "3K", "4K", "ACE", "HS", "Rounds"];
 
- for (var i = 0; i < 4; i++) {
+ for (var i = 0; i < cols; i++) {
   var th = document.createElement('th');
   th.appendChild(document.createTextNode(columnNames[i]));
   headRow.appendChild(th);
