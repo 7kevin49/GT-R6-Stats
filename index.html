@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>This is a Heading</h1>
+<h1>R6 Match Stat Builder</h1>
 <p>This is a paragraph.</p>
 
 <script>
@@ -38,7 +38,17 @@
       var input = document.createElement('input');
       input.type = "text";
       input.value = 'Row #' + (i + 1); // Add a value?
+      //Now adding the increment buttons
+
+      td.classList.add("button");
+
+      var button = document.createElement('button');
+      button.type = 'add';
+      button.value('+');
+
+
       td.appendChild(input);
+      td.appendChild(button);
       tr.appendChild(td);
   }
      tbody.appendChild(tr);
