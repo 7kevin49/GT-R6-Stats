@@ -2,6 +2,7 @@
 <html lang = "en">
 <head>
 <title>R6 Match Stat Builder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -42,9 +43,11 @@
       var input = document.createElement('input');
       input.id = i + ',' + j;
       input.type = "text";
-      input.width = 20;
+      //input.width = 20;
+      input.setAttribute('size','1');
       if (j === 0) {
           input.value = 'Row #' + (i + 1); // Add a value?
+          input.width = 100;
       } else {
           input.value = '' + statsForPlayer[j - 1];
       }
