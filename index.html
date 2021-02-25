@@ -6,7 +6,8 @@
 <body>
 
 <h1>R6 Match Stat Builder</h1>
-<p>This is a paragraph.</p>
+<h2>INSTRUCTIONS</h2>
+<p>Do not manually edit text fields except for Player names!</p>
 
 <script>
  var rows = 5;
@@ -32,7 +33,7 @@
  var allStats = [];
  for (var i = 0; i < rows; i++) {
   var tr = document.createElement('tr');
-  var statsForPlayer = [0,0,0,0,0,0,0,0,0,0,0,0];
+  var statsForPlayer = [0,0,0,0,0,0,0,0,0,0,0,0,0];
   allStats.push(statsForPlayer);
   for (var j = 0; j < cols; j++) {
    var td = document.createElement('td');
@@ -64,6 +65,35 @@
           var minus = document.createTextNode("-");
 
           plusButton.appendChild(plus);
+          plusButton.id = i + ',' + j;
+
+          plusButton.onclick = function() {
+              //console.log(this.id);
+
+              var x1 = this.id.charAt(0);
+              var y1 = this.id.substring(2);
+
+              allStats[x1][y1] = allStats[x1][y1] + 1;
+              //var id = button+.id;
+              var x = document.getElementById(this.id);
+              x.value = allStats[x1][y1];
+              //console.log(allStats);
+          };
+
+          minusButton.id = i + ',' + j;
+          minusButton.onclick = function() {
+              //console.log(this.id);
+
+              var x1 = this.id.charAt(0);
+              var y1 = this.id.charAt(2);
+
+              allStats[x1][y1] = allStats[x1][y1] - 1;
+              //var id = button+.id;
+              var x = document.getElementById(this.id);
+              x.value = allStats[x1][y1];
+              //console.log(allStats);
+          };
+
           minusButton.appendChild(minus);
 
           td.appendChild(plusButton);
@@ -80,19 +110,41 @@
 
  var testButton = document.createElement('button');
 
+ var submitButton = document.createElement('button');
+var sub = document.createTextNode('To CSV and Download');
+
+submitButton.appendChild(sub);
+
+document.body.appendChild(submitButton);
+
+submitButton.onclick = function() {
+    for(var l = 0; l < 5; l++) {
+        allStats[l][0] = document.getElementById("" + l + ",0").value
+        for (var k = 1; k <13; k++) {
+             allStats[l][k]= allStats[l][k].toString()
+        }
+    }
+
+    allStats.unshift(columnNames);
+    //console.log(allStats);
+    //console.log(allStats);
+    let csvContent = "data:text/csv;charset=utf-8,";
+    allStats.forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+    });
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+};
  //testButton.onclick(statsForPlayer[0][0] = statsForPlayer[0][0] + 1);
- var add = document.createTextNode('add');
- testButton.appendChild(add);
-
- document.body.appendChild(testButton);
-
- testButton.onclick = function() {add1()};
- function add1() {
-     allStats[0][0] = allStats[0][0] + 1;
-     console.log(allStats[0][0]);
-     var x = document.getElementById(0 + ','+ 0);
-     x.value = allStats[0][0];
- }
+ // var add = document.createTextNode('add player');
+ // testButton.appendChild(add);
+ // document.body.appendChild(testButton);
+ //
+ // //This will add players "eventually"
+ // testButton.onclick = function() {add1()};
+ // function add1(b) {
+ // }
 </script>
 
 </body>
